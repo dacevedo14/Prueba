@@ -18,10 +18,9 @@ class Client:
     		r = requests.post(url = url, headers = header, data = json.dumps(payload))
     		response = r.json()
 		
-		print response
-
 		if "status" in response.keys():
-			return response["status"]
+			status = response["status"]
+			print "Status: %s" % status
 		else:
 			return None
 
