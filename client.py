@@ -30,9 +30,8 @@ class Client:
 		db = response["payload"]
 		print db
 
-#		for data in db:
-#			for dict in data:
-#				print dict, data(dict)
+		for key,values in db.items():
+			print key,":",value
 
 
 	def request(self, volt, curr):
