@@ -26,23 +26,30 @@ class Client:
     		url = self.url + '/read' 
     		r = requests.post(url = url, headers = header, data = json.dumps(payload))
     		response = r.json()
-		print response
 		db = response["payload"]
-		print db
 
-		for key,values in db.items():
-			print key,":",value
+		for key in db.keys():
+			print key,":",db[key]
 
 
 	def request(self, volt, curr):
-    		header = {"Content-Type":"application/json" }
-		payload = {"Voltage":"volt","Current":"curr"}
+		tv = type(volt)
+		tc = type (curr)
+		print tc
+		print tv	
+#		if tv = 'str' and tc = 'str':
+		header = {"Content-Type":"application/json" }
+		payload = {"Voltage":volt,"Current":curr}
     		url = self.url+'/request'
-    		r = requests.post(url = url, headers = header, data = json.dumps(payload))    		
+		r = requests.post(url = url, headers = header, data = json.dumps(payload))    		
 		response = r.json()
+		db = response["payload"]
+		
+		for data in db:
+			for key in data.keys:
+		Test.request("<2","<4")
+		print key,":", data[key]
+#		else:
+#			print('error en la variable')
 
-		for data in response:
-			for dict in data:
-				print dict, data(dict)
-
-
+			
