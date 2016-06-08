@@ -4,12 +4,7 @@ import json
 class Client:
 	def __init__(self, url):
 		self.url = url
-
-	def info_shows (self, response):
-		info = response["payload"]
-		for array in info:
-			print "ID:{}\nVoltaje:{}\nCorriente{}\n'----------'".format(array[0], array[1], array[2])
-		
+	
 
 	def save(self, volt, curr):
 		header = {"Content-Type":"application/json" }
@@ -31,8 +26,13 @@ class Client:
     		url = self.url + '/read' 
     		r = requests.post(url = url, headers = header, data = json.dumps(payload))
     		response = r.json()
-		info_shows (self, response)
+		print response
+		db = response["payload"]
+		print db
 
+#		for data in db:
+#			for dict in data:
+#				print dict, data(dict)
 
 
 	def request(self, volt, curr):
@@ -41,10 +41,9 @@ class Client:
     		url = self.url+'/request'
     		r = requests.post(url = url, headers = header, data = json.dumps(payload))    		
 		response = r.json()
-		info_shows (self, response)
 
-
-
-
+		for data in response:
+			for dict in data:
+				print dict, data(dict)
 
 
